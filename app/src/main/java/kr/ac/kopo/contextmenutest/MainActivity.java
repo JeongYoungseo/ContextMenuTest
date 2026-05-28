@@ -1,5 +1,6 @@
 package kr.ac.kopo.contextmenutest;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -43,8 +45,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("대화상자연습");
-                dialog.setMessage("대화상자 내용 부분");
+                dialog.setMessage("배경색을 파란색으로 변경할까요?");
                 dialog.setIcon(R.drawable.icon);
+                dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(getApplicationContext(), "확인버튼을 클릭하셨습니다.", Toast.LENGTH_SHORT).show();
+                        linear.setBackgroundColor(Color.BLUE);
+                    }
+                });
+                dialog.setNegativeButton("취소",null);
                 dialog.show();
             }
         });
